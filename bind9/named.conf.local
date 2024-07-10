@@ -1,0 +1,11 @@
+// zona direta
+zone "system-dev.com.br" {
+    type master;
+    file "/etc/bind/db.system-dev.com.br";
+};
+
+// zona reversa
+zone "192.-in.addr.arpa" {
+    type master;
+    file "/etc/bind/db.192";
+};
