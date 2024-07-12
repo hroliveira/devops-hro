@@ -28,11 +28,11 @@ spec:
         name: traefik-ingress-lb
         ports:
         - name: web
-          containerPort: 80
-          hostPort: 80
+          containerPort: 8081
+          hostPort: 8081
         - name: websecure
-          containerPort: 443
-          hostPort: 443
+          containerPort: 8443
+          hostPort: 8443
         - name: admin
           containerPort: 8080
           hostPort: 8080
@@ -43,8 +43,8 @@ spec:
             add:
             - NET_BIND_SERVICE
         args:
-        - --entrypoints.web.address=:80
-        - --entrypoints.websecure.address=:443
+        - --entrypoints.web.address=:8081
+        - --entrypoints.websecure.address=:8443
         - --entrypoints.traefik.address=:8080
         - --api.insecure=true
         - --providers.kubernetescrd
@@ -70,9 +70,9 @@ data:
   traefik.yml: |
     entryPoints:
       web:
-        address: ":80"
+        address: ":8081"
       websecure:
-        address: ":443"
+        address: ":8443"
       traefik:
         address: ":8080"
     api:
@@ -92,10 +92,10 @@ spec:
     k8s-app: traefik-ingress-lb
   ports:
     - protocol: TCP
-      port: 80
+      port: 8081
       name: web
     - protocol: TCP
-      port: 443
+      port: 8443
       name: websecure
     - protocol: TCP
       port: 8080

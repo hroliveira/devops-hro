@@ -122,6 +122,35 @@ $ cd devops-hro/exercicios/
 $ kubectl apply -f ui.yml
 ```
 
+# Volume
+
+### Volumes
+
+Para fazermos os exercícios do volume, iremos fazer o deployment do pod com o volume, que estará apontando para um caminho no host.
+
+Fazer o deployment do Longhorn.
+
+```sh
+$ kubectl apply -f mariadb-longhorn-volume.yml
+```
+
+# LOG
+
+### Graylog - LOG
+
+O Graylog é a aplicação que iremos usar como agregador de logs do cluster. Os logs dos containers podem ser vistos pelo Rancher, é um dos níveis de visualização. Pelo Graylog temos outros funcionalidades, e também é possível salvar para posterior pesquisa, e muitas outras funcionalidades.
+
+Para instalar o Graylog, iremos aplicar o template dele, que está em graylog.yml. Para isso, é preciso que sejam editados 2 pontos no arquivo.
+
+- Linha 264 - value: http://graylog.rancher.<dominino>/api
+- Linha 340 - host: graylog.rancher.<dominio>
+
+Substituir o {user}, pelo nome do aluno. Após substituir, aplicar e entrar no Graylog para configurar.
+```sh
+$ kubectl apply -f graylog.yml
+```
+Seguir os passos do instrutor para configuração do Graylog.
+
 
 
 <img width=100% src="https://capsule-render.vercel.app/api?type=waving&color=296999&height=120&section=footer"/>
